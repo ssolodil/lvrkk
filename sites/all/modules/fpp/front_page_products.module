@@ -1,0 +1,33 @@
+<?php
+function front_page_products_block_info() {
+
+  // This example comes from node.module.
+  $blocks['fpp_block'] = array(
+    'info' => t('Esilehele väljatoodud tooted'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+function front_page_products_block_view($delta = '') {
+
+  // This example is adapted from node.module.
+  $block = array();
+  switch ($delta) {
+    case 'fpp_block':
+      $block['subject'] = t('');
+      $block['content'] = front_page_products_get_products();
+      break;
+
+  }
+  return $block;
+}
+function front_page_products_get_products(){
+
+    $query = db_select('node','n');
+    $query -> condition('n.type','product','=');
+    $query -> fields('n');
+    $results = $query->execute();
+    while($product = $results->fetchAssoc()){
+    //   krumo($product);
+    }
+}

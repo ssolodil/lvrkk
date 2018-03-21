@@ -1,0 +1,4 @@
+name = Uudised 3 kaupa
+description = "Uudised 3 kaupa"
+core = 7.x
+package = LVRKK
